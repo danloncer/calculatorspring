@@ -16,26 +16,29 @@ public class CalculatorController {
 
     @GetMapping
     public String printHello() {
-        return calculatorServiceImpl.printHello();
+        return "Добро пожаловать в калькулятор.";
     }
 
     @GetMapping("/plus")
     public String findSum(@RequestParam int num1, @RequestParam int num2) {
-        return calculatorServiceImpl.findSum(num1, num2);
+        return num1 + " + " + num2 + " = " + calculatorServiceImpl.findSum(num1, num2);
     }
 
     @GetMapping("/minus")
     public String findDifference(@RequestParam int num1, @RequestParam int num2) {
-        return calculatorServiceImpl.findDifference(num1, num2);
+        return num1 + " - " + num2 + " = " + calculatorServiceImpl.findDifference(num1, num2);
     }
 
     @GetMapping("/multiply")
     public String findMultiply(@RequestParam int num1, @RequestParam int num2) {
-        return calculatorServiceImpl.findMultiply(num1,num2);
+        return num1 + " * " + num2 + " = " +  calculatorServiceImpl.findMultiply(num1,num2);
     }
 
     @GetMapping("/divide")
     public String findDivide(@RequestParam int num1, @RequestParam int num2) {
-        return calculatorServiceImpl.findDivide(num1, num2);
+        if (num2 == 0) {
+            return "Делить на нуль нельзя!";
+        }
+        return num1 + " / " + num2 + " = " +  calculatorServiceImpl.findDivide(num1, num2);
     }
 }
